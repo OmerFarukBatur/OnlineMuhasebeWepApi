@@ -6,4 +6,20 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="MediatR" Version="11.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Features\AppFeatures\Queries\" />
+    <Folder Include="Features\CompanyFeatures\Commands\" />
+    <Folder Include="Features\CompanyFeatures\" />
+    <Folder Include="Features\CompanyFeatures\Queries\" />
+    <Folder Include="Services\CompanyServices\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\OnlineMuhasebeWepApi.Domain\OnlineMuhasebeWepApi.Domain.csproj" />
+  </ItemGroup>
+
 </Project>

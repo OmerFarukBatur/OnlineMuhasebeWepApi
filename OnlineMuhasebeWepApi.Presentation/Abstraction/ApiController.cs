@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using MediatR;
+using Microsoft.AspNetCore.Mvc;
 
 namespace OnlineMuhasebeWepApi.Presentation.Abstraction
 {
@@ -6,5 +7,11 @@ namespace OnlineMuhasebeWepApi.Presentation.Abstraction
     [Route("api/[controller]")]
     public abstract class ApiController : ControllerBase
     {
+        protected readonly IMediator _mediator;
+
+        protected ApiController(IMediator mediator)
+        {
+            _mediator = mediator;
+        }
     }
 }
