@@ -12,8 +12,6 @@
 
   <ItemGroup>
     <Folder Include="Features\AppFeatures\Queries\" />
-    <Folder Include="Features\CompanyFeatures\Commands\" />
-    <Folder Include="Features\CompanyFeatures\" />
     <Folder Include="Features\CompanyFeatures\Queries\" />
     <Folder Include="Services\CompanyServices\" />
   </ItemGroup>
