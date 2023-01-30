@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using OnlineMuhasebeWepApi.Application.Services.AppServices;
+using OnlineMuhasebeWepApi.Application.Services.CompanyServices;
 using OnlineMuhasebeWepApi.Domain;
 using OnlineMuhasebeWepApi.Domain.AppEntities.Identity;
 using OnlineMuhasebeWepApi.Domain.Repositories.UCOARepository;
@@ -10,6 +11,7 @@ using OnlineMuhasebeWepApi.Persistance;
 using OnlineMuhasebeWepApi.Persistance.Context;
 using OnlineMuhasebeWepApi.Persistance.Repositories.UCOARepositories;
 using OnlineMuhasebeWepApi.Persistance.Services.AppServices;
+using OnlineMuhasebeWepApi.Persistance.Services.CompanyServices;
 using A = OnlineMuhasebeWepApi.Application;
 using Pe = OnlineMuhasebeWepApi.Persistance;
 using Pr = OnlineMuhasebeWepApi.Presentation;
@@ -27,6 +29,10 @@ builder.Services.AddScoped<IUnitOfWork,UnitOfWork>();
 
 builder.Services.AddScoped<IUCOAReadRepository, UCOAReadRepositry>();
 builder.Services.AddScoped<IUCOAWriteRepository, UCOAWriteRepositry>();
+
+builder.Services.AddScoped<IContextService, ContextService>();
+
+builder.Services.AddScoped<IUCOAService,UCOAService>();
 
 builder.Services.AddMediatR(typeof(A.AssemblyReference).Assembly);
 

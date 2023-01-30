@@ -1,11 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
+using OnlineMuhasebeWepApi.Domain.Abstractions;
 using OnlineMuhasebeWepApi.Domain.AppEntities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace OnlineMuhasebeWepApi.Persistance.Context
 {
@@ -59,6 +55,21 @@ namespace OnlineMuhasebeWepApi.Persistance.Context
             {
                 return new CompanyDbContext();
             }
+        }
+
+        public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
+        {
+            var entries = ChangeTracker.Entries<Entity>();
+            foreach (var entry in entries)
+            {
+                _ = entry.State switch
+                {
+                    EntityState.Added => entry.Entity.CreatedDate = DateTime.UtcNow,
+                    EntityState.Modified => entry.Entity.UpdateDate = DateTime.UtcNow,
+                    _ => DateTime.UtcNow
+                };
+            }
+            return base.SaveChangesAsync(cancellationToken);
         }
     }
 }

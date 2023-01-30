@@ -20,7 +20,7 @@ namespace OnlineMuhasebeWepApi.Persistance.Repositories
         private CompanyDbContext _context;
         public DbSet<T> Entity { get; set; }
 
-        public void CreateDbContextInstance(DbContext context)
+        public void SetDbContextInstance(DbContext context)
         {
             _context = (CompanyDbContext)context;
             Entity = _context.Set<T>();

@@ -7,7 +7,7 @@ namespace OnlineMuhasebeWepApi.Persistance
     public sealed class UnitOfWork : IUnitOfWork
     {
         private CompanyDbContext _context;
-        public void CreateDbContextInstance(DbContext context)
+        public void SetDbContextInstance(DbContext context)
         {
             _context = (CompanyDbContext)context;
         }

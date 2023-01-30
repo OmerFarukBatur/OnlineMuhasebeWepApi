@@ -7,9 +7,8 @@ using System.Threading.Tasks;
 
 namespace OnlineMuhasebeWepApi.Domain
 {
-    public interface IUnitOfWork 
+    public interface IContextService
     {
-        void SetDbContextInstance(DbContext context);
-        Task<int> SaveChangesAsync();
+        DbContext CreateDbContext(string companyId);
     }
 }

@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using OnlineMuhasebeWepApi.Application.Services.CompanyServices;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,9 +10,17 @@ namespace OnlineMuhasebeWepApi.Application.Features.CompanyFeatures.Commands.UCO
 {
     public sealed class CreateUCOACommandHandler : IRequestHandler<CreateUCOACommandRequest, CreateUCOACommandResponse>
     {
-        public Task<CreateUCOACommandResponse> Handle(CreateUCOACommandRequest request, CancellationToken cancellationToken)
+        private readonly IUCOAService _uCOAService;
+
+        public CreateUCOACommandHandler(IUCOAService uCOAService)
         {
-            throw new NotImplementedException();
+            _uCOAService = uCOAService;
+        }
+
+        public async Task<CreateUCOACommandResponse> Handle(CreateUCOACommandRequest request, CancellationToken cancellationToken)
+        {
+            await _uCOAService.CreateUCOAAsync(request);
+            return new();
         }
     }
 }

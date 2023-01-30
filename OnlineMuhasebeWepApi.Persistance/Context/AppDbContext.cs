@@ -22,38 +22,12 @@ namespace OnlineMuhasebeWepApi.Persistance.Context
             var entries = ChangeTracker.Entries<Entity>();
             foreach (var entry in entries)
             {
-                //if (entry.State == EntityState.Added)
-                //{
-                //    entry.Property(p => p.Id)
-                //        .CurrentValue = Guid.NewGuid().ToString();
-                //    entry.Property(p => p.CreatedDate)
-                //        .CurrentValue = DateTime.Now;
-                //}
-                //else if (entry.State == EntityState.Modified)
-                //{
-                //    entry.Property(p => p.UpdateDate)
-                //        .CurrentValue = DateTime.Now;
-                //}
-
                 _ = entry.State switch
                 {
                     EntityState.Added => entry.Entity.CreatedDate = DateTime.UtcNow,
                     EntityState.Modified => entry.Entity.UpdateDate = DateTime.UtcNow,
                     _ => DateTime.UtcNow
                 };
-
-                //switch (entry.State)
-                //{
-                //    case EntityState.Modified:
-                //        entry.Entity.UpdateDate = DateTime.Now;
-                //        break;
-                //    case EntityState.Added:
-                //        entry.Entity.CreatedDate = DateTime.Now;
-                //        break;
-                //    default:
-                //        _ = DateTime.Now;
-                //        break;
-                //}
             }
             return base.SaveChangesAsync(cancellationToken);
         }
